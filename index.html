@@ -3,24 +3,89 @@
     <head>
         <style>
             p {
-                font-family: "Verdana";
+            font-family: "Verdana";
             }
             h1 {
-                font-family: "Courier";
+            font-family: "Courier";
             }
             #c {
-                border: 1px dashed red;
+            border: 1px dashed red;
             }
         </style>
     </head>
     <body>
         <h1>Jimmy McLeo</h1>
-        <canvas id="c" width="500" height="500"></canvas>
+        <canvas id="canvas" width="300" height="200"></canvas>
         <script>
-            var c = document.getElementById("c");
-            var ctx = c.getContext("2d");
-            ctx.rect(20, 20, 150, 100);
+            var canvas;
+            var ctx;
+            var dx = 5;
+            var dy = 5;
+            var x = 150;
+            var y = 100;
+            var WIDTH = 300;
+            var HEIGHT = 200;
+            
+            function circle(x,y,r) {
+            ctx.beginPath();
+            ctx.arc(x, y, r, 0, Math.PI*2, true);
+            ctx.fill();
+            }
+            
+            function rect(x,y,w,h) {
+            ctx.beginPath();
+            ctx.rect(x,y,w,h);
+            ctx.closePath();
+            ctx.fill();
             ctx.stroke();
+            }
+            
+            function clear() {
+            ctx.clearRect(0, 0, WIDTH, HEIGHT);
+            }
+            
+            function init() {
+            canvas = document.getElementById("canvas");
+            ctx = canvas.getContext("2d");
+            return setInterval(draw, 10);
+            }
+            
+            function doKeyDown(evt){
+            switch (evt.keyCode) {
+            case 38:  /* Up arrow was pressed */
+            if (y - dy > 0){
+            y -= dy;
+            }
+            break;
+            case 40:  /* Down arrow was pressed */
+            if (y + dy < HEIGHT){
+            y += dy;
+            }
+            break;
+            case 37:  /* Left arrow was pressed */
+            if (x - dx > 0){
+            x -= dx;
+            }
+            break;
+            case 39:  /* Right arrow was pressed */
+            if (x + dx < WIDTH){
+            x += dx;
+            }
+            break;
+            }
+            }
+            
+            function draw() {
+            clear();
+            ctx.fillStyle = "white";
+            ctx.strokeStyle = "black";
+            rect(0,0,WIDTH,HEIGHT);
+            ctx.fillStyle = "purple";
+            circle(x, y, 10);
+            }
+            
+            init();
+            window.addEventListener('keydown',doKeyDown,true);
         </script>
     </body>
 </html>
