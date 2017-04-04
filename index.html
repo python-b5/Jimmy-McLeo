@@ -15,7 +15,7 @@
     </head>
     <body>
         <h1>Jimmy McLeo</h1>
-        <canvas id="canvas" width="300" height="200"></canvas>
+        <canvas id="canvas" width="500" height="500"></canvas>
         <script>
             var canvas;
             var ctx;
@@ -23,8 +23,8 @@
             var dy = 5;
             var x = 150;
             var y = 100;
-            var WIDTH = 300;
-            var HEIGHT = 200;
+            var WIDTH = 490;
+            var HEIGHT = 490;
             
             function circle(x,y,r) {
             ctx.beginPath();
@@ -79,7 +79,7 @@
             clear();
             ctx.fillStyle = "white";
             ctx.strokeStyle = "black";
-            rect(0,0,WIDTH,HEIGHT);
+            rect(5,5, WIDTH, HEIGHT);
             ctx.fillStyle = "purple";
             circle(x, y, 10);
             }
