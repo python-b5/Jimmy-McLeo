@@ -23,21 +23,13 @@
             var dy = 5;
             var x = 150;
             var y = 100;
-            var WIDTH = 490;
-            var HEIGHT = 490;
+            var WIDTH = 500;
+            var HEIGHT = 500;
             
             function circle(x,y,r) {
             ctx.beginPath();
             ctx.arc(x, y, r, 0, Math.PI*2, true);
             ctx.fill();
-            }
-            
-            function rect(x,y,w,h) {
-            ctx.beginPath();
-            ctx.rect(x,y,w,h);
-            ctx.closePath();
-            ctx.fill();
-            ctx.stroke();
             }
             
             function clear() {
@@ -79,7 +71,6 @@
             clear();
             ctx.fillStyle = "white";
             ctx.strokeStyle = "black";
-            rect(5,5, WIDTH, HEIGHT);
             ctx.fillStyle = "purple";
             circle(x, y, 10);
             }
